@@ -1,0 +1,58 @@
+<html>
+  <head>
+    {% block head %}
+      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/screen.css') }}"></link>
+      <title> {% block title %} {{ title }} {% endblock %} </title>
+	{% endblock %}
+  </head>
+  <body>
+    {% block scripts %}
+      <!-- placeholder -->
+    {% endblock %}
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+	<div class=flashes>
+	  {% for message in messages %}
+	    {{ message }}<br>
+	  {% endfor %}
+	</div>
+      {% endif %}
+    {% endwith %}
+
+    {% block header %}
+      <div class="container">
+	<div class="left-nav navlink">
+	  <a href={{ url_for("event_information") }}> Event Information</a>
+	  <a href={{ url_for("event_information") }}> Event Information</a>
+	</div>
+	<a class="main-title" href="{{ url_for('home') }}">
+	  <span class="cursive">Debbie and Matt</span>
+	  <div class="subtitle cursive"> September 13th, 2014 </div>
+	</a>
+	<div class="right-nav navlink">
+	  <a href={{ url_for("event_information") }}> Event Information</a>
+	  <a href={{ url_for("event_information") }}> Event Information</a>
+	</div>
+      </div>
+    {% endblock %}
+    {% block body %}
+    {% endblock %}
+    {% block footer %}
+      <div class="bottom-container">
+	<table>
+	  <tr>
+	    <td class="box ourlightpink" bgcolor="#ffb5d7"></td>
+	    <td class="box ourpink" bgcolor="ea5ea7"></td>
+	    <td class="box ourdarkpink" bgcolor="c3066d"></td>
+	    <td class="box ourpurple" bgcolor="ac1f6e"></td>
+	    <td class="box ourblue" bgcolor="63dbe9"></td>
+	    <td class="box ourgreen" bgcolor="049a7d"></td>
+	  </tr>
+	</table>
+      </div>
+    {% endblock %}
+    {% block endscripts %}
+
+    {% endblock %}
+  </body>
+</html>
