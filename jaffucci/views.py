@@ -27,13 +27,33 @@ def index():
 @app.route('/home')
 def home():
     return render_template("home.html",
-                           title="Debbie and Matt")
+                           title="Debbie and Matt",
+                           selected={})
 
 
 @app.route('/event_information')
 def event_information():
     return render_template("event_information.html",
-                           title="Event Info")
+                           title="Event Info",
+                           selected={"event_information": "selected"})
+
+@app.route('/accomodations')
+def accomodations():
+    return render_template("accomodations.html",
+                           title="Accomodations",
+                           selected={"accomodations": "selected"})
+
+@app.route('/our_story')
+def our_story():
+    return render_template("our_story.html",
+                           title="Our Story",
+                           selected={"our_story": "selected"})
+
+@app.route('/happy_hour')
+def happy_hour():
+    return render_template("happy_hour.html",
+                           title="Happy Hour",
+                           selected={"happy_hour": "selected"})
 
 @app.route('/image_check')
 @login_required

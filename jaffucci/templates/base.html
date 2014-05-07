@@ -20,18 +20,22 @@
     {% endwith %}
 
     {% block header %}
-      <div class="container">
+      <div id="header-container">
 	<div class="left-nav navlink">
-	  <a href={{ url_for("event_information") }}> Event Information</a>
-	  <a href={{ url_for("event_information") }}> Event Information</a>
+	  <div class="inner-nav">
+	    <a href={{ url_for("event_information") }} class="{{ selected.event_information }}"> Event Information</a>
+	    <a href={{ url_for("accomodations") }} class="{{ selected.accomodations }}"> Accomodations</a>
+	  </div>
 	</div>
 	<a class="main-title" href="{{ url_for('home') }}">
 	  <span class="cursive">Debbie and Matt</span>
 	  <div class="subtitle cursive"> September 13th, 2014 </div>
 	</a>
 	<div class="right-nav navlink">
-	  <a href={{ url_for("event_information") }}> Event Information</a>
-	  <a href={{ url_for("event_information") }}> Event Information</a>
+	  <div class="inner-nav">
+	    <a href={{ url_for("our_story") }} class="{{ selected.our_story }}"> Our Story</a>
+	    <a href={{ url_for("happy_hour") }} class="{{ selected.happy_hour }}"> Happy Hour</a>
+	  </div>
 	</div>
       </div>
     {% endblock %}
