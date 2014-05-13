@@ -1,0 +1,87 @@
+{% extends "base.html" %}
+{% block scripts %}
+<script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
+{% endblock %}
+
+
+{% block body %}
+<div id="story-container">
+  <h1> Our Story </h1>
+  <div id="column-1">
+    <div id="mustache" class="story">
+      <img src="{{ url_for('static', filename='img/moustache.png') }}">
+      <h2> The Meeting </h2>
+      <div class="story-content" style="display: none">
+	<p> Debbie met Matt at a 1920s themed house party in early January of 2011. Debbie had grudgingly agreed to attend the party with her good friend Malika, and they had arrived appropriately on time and begun to mingle with the other guests. Outside, a Bloomington special&trade ice storm raged, and the ladies were more than happy to wait out the storm safely and warmly indoors. Meanwhile, on the South side of the town, Matt and Ahmed stepped outside with plans to hop in the car and head to the party, only to find an inch thick sheet of ice coating every horizontal surface. </p>
+	<p> "Well," said Matt, "I guess we aren't driving" </p>
+	<p> "Definitely not." Ahmed replied with a laugh. </p>
+	<p> Matt went back inside and found the spiked shoe covers he'd just gotten for Christmas.  He had only one pair, so he took the right foot and Ahmed the left, and they struck out across town. Barely an hour later they arrived, literally coated in ice. They stepped inside shaking off shards and were quickly greeted by those partygoers they already knew, and introduced to those they didn't. Matt shook hands with Debbie and smiled at her as they exchanged names. It should be mentioned at this point that although the party was 1920s themed, Matt had never been one to put too much effort into a costume... or into the upkeep of his personal appearance. This night he'd been able to kill two birds with one stone by shaving off the majority of his bushy beard, leaving only a striking mustache which was vaguely reminiscent of some time in the past, although perhaps not the '20s exactly.</p>
+	<p> Not 15 minutes later a group stood in the kitchen, conversing about nothing in particular - Debbie stood across the circle from Matt, and then suddenly stuck out her hand </p>
+	<p> "Hi I'm Debbie, I don't think we've met yet," she said cheerily.</p>
+	<p> Matt turned to her, surprised, and took the offered hand saying "we literally just met... You don't remember the mustache?!" </p>
+	<p> "I try to forget it." she retorted, and the onlookers made the "deep burn" noise. </p>
+	<p> It was a bit odd, but from that point on, they barely stopped talking for the rest of the night, exchanging tastes in music and stories, the conversation flowed, and before Matt knew it, it was time for Debbie to leave. That very same weekend, Debbie tried to set Matt up with a friend of hers on a swim date, which Matt cluelessly went on the next Monday (mustache still intact). Debbie soon realized her error, but that's another story...
+	</p>
+	<img width="95%" src="{{ url_for('static', filename='img/1920s_1.jpg') }}" title="Just talked all night!"/>
+	<img width="95%" src="{{ url_for('static', filename='img/1920s_2.jpg') }}" title="They really never left that spot did they?"/>
+      </div>
+    </div>
+    <div id="move" class="story">
+      <img src="{{ url_for('static', filename='img/move.png') }}"/>
+      <h2> The Move </h2>
+      <div class="story-content" style="display: none">
+	<p> With a PhD and Master's degree looming for Debbie and Matt respectively, it was time to make a decision. Matt's new found motivation, combined with Debbie's hunger to take the workforce by storm led them to begin a job hunt which culminated in both of them finding employment in the DC area. The move went completely smoothly, and they were not without furniture or any of their possesions for over a week when they arrived. Also Matt didn't break 7 things while they were trying to unpack, and Debbie maintained a composed and pleasant attitude while her favorite mug was not broken. </p>
+      <img width="95%" src="{{ url_for('static', filename='img/move_2.jpg') }}" title="Unpacking... isn't she the cutest?"/>
+      </div>
+    </div>
+  </div>
+  <div id="column-2">
+    <div id="heart" class="story">
+      <img src="{{ url_for('static', filename='img/heart.png') }}">
+      <h2> The Kiss </h2>
+      <div class="story-content" style="display: none">
+	<p> It was... electric. No one knows for sure who struck first, but they found themselves enraptured in a deep and passionate kiss one night, standing between a Qdoba and a Starbucks. They both pulled away grinning at each other, and either would have sworn that there was no one else in the world at that moment. Neither realized that their friends had just gotten tired of waiting and had gotten in line for burritos. </p>
+      </div>
+    </div>
+    <div id="jobs" class="story">
+      <img src="{{ url_for('static', filename='img/jobs.png') }}">
+      <h2> The Jobs </h2>
+      <div class="story-content" style="display: none">
+	<p> In the Summer of 2013, Debbie and Matt started their new jobs. Debbie was able to put what she'd already learned while doing her dissertation to work almost immediately while doing higher education consulting. Matt got down to business writing software and doing research into various aspects of network security. Of course Debbie was simultaneously working on her dissertation, and so the happy couple had gobs of free time. </p>
+      </div>
+    </div>
+  </div>
+  <div id="column-3">
+    <div id="venn" class="story">
+      <img src="{{ url_for('static', filename='img/venn.gif') }}">
+      <h2> The Dating </h2>
+      <div class="story-content" style="display: none">
+	<p> It wasn't too long after that first kiss (Deb would tell you that it was an age), that they started dating. Dating didn't always consist of a lot of dates though. What it did consist of was the two of them standing in the kitchen laughing uncontrollably, playing pranks on each other, going on midnight grocery runs to make waffles with chocolate milk, and all sorts of other things that normal couples do. Oh, and they worked; Debbie was cranking through her dissertation in addition to holding down a job at IU rec sports, and Matt who had traditionally been a bit of a bum, was consistenly impressed with her work ethic. It slowly began to rub off on him, and more and more often he found himself seated across from her at the kitchen table, laptops open, working furiously and playing footsie.
+	</p>
+      </div>
+    </div>
+    <div id="ring" class="story">
+      <img src="{{ url_for('static', filename='img/ring.png') }}">
+      <h2> The Question </h2>
+      <div class="story-content" style="display: none">
+	<p>After months of painstaking planning, Matt was finally ready. He'd chartered a small plane to the Outer Banks, piloted by none other than your co-officiant Brennon York. He'd invested in a beautiful peice of hand-crafted hardware from a master diamond cutter. He'd wrangled a small camera crew, and he knew it was time for the Q to be P'ed. After an only slightly turbulent flight on which Matt had no issues whatsoever, they landed in the Outer Banks. After a short drive to Jockey's Ridge State park, they hiked to the top of the highest sand dune. Matt pointed to a water tower far in the distance and then sneakily fished the ring box out of his swim trunks which he'd brought along 'just in case'. When Debbie turned around to determine the source of his fidgeting she found him down on one knee. She nearly knocked him over in her excitement, but he held her at bay... he had thought over what he would say, and he wasn't about to let all that preparation go to waste. </p>
+	<p> "Deborah Lynne Santucci... or just my Deb... will you marry me?" </p>
+      </div>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+{% block endscripts %}
+<script src="{{ url_for('static', filename='js/jaffucci.js') }}"> </script>
+<script>
+
+ $("#mustache").click(function (e) { $("#mustache div.story-content").toggle("fast"); });
+ $("#ring").click(function (e) { $("#ring div.story-content").toggle("fast"); });
+ $("#move").click(function (e) { $("#move div.story-content").toggle("fast"); });
+ $("#heart").click(function (e) { $("#heart div.story-content").toggle("fast"); });
+ $("#jobs").click(function (e) { $("#jobs div.story-content").toggle("fast"); });
+ $("#venn").click(function (e) { $("#venn div.story-content").toggle("fast"); });
+</script>
+
+{% endblock %}

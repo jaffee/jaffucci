@@ -32,14 +32,18 @@ def home():
 
 
 @app.route('/event_information')
-def event_information():
+@app.route('/event_information/<string:subpage>')
+def event_information(subpage=None):
     return render_template("event_information.html",
                            title="Event Info",
+                           subpage=subpage,
                            selected={"event_information": "selected"})
 
+@app.route('/accomodations/<string:subpage>')
 @app.route('/accomodations')
-def accomodations():
+def accomodations(subpage=None):
     return render_template("accomodations.html",
+                           subpage=subpage,
                            title="Accomodations",
                            selected={"accomodations": "selected"})
 

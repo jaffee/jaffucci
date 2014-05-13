@@ -4,7 +4,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <style type="text/css">
     html {
-    background: url(/static/img/aspen_wye.jpg) no-repeat center center;
+    background: url(/static/img/accomodations_bg2.jpg) no-repeat center center;
     background-size: cover;
     }
   </style>
@@ -14,24 +14,58 @@
 {% block body %}
   <div class="content">
     <div class="button-container">
-      <button id="hotel-info"> Hotel Info </button>
-      <button id="book"> Book Now </button>
-      <button id="things-to-do"> Things To Do </button>
+      <button id="hotel-info">
+	<span> <img height="32px" src="{{ url_for('static', filename='img/hotel.png') }}"/> </span>
+	<span> Hotel Info </span>
+      </button>
+      <button id="book">
+	<span> <img height="32px" src="{{ url_for('static', filename='img/book.png') }}"/> </span>
+	<span> Book Now </span>
+      </button>
+      <button id="things-to-do">
+	<span> <img height="32px" src="{{ url_for('static', filename='img/thingstodo.png') }}"/> </span>
+	<span> Things To Do </span>
+      </button>
     </div>
     <div id="hotel-info-content" class="subcontent">
       <h1> Aspen Wye River Conference Center </h1>
-      <ul>
-	<li> 600 Aspen Drive, Queenstown, Maryland, 21658 <a href="https://www.google.com/maps/dir//38.9105724,-76.1147488/@38.910491,-76.1149688,397m/data=!3m1!1e3!4m3!4m2!1m0!1m0">map</a></li>
-	<li> Feel free to arrive Friday evening and stay until Sunday! </li>
-	<li> Ceremony begins at 5pm on Saturday, but there will be some hang out time beforehand </li>
-	<li> Reception to follow... bring your dancin' shoes! </li>
-      </ul>
+
+      <h4> 600 Aspen Drive, Queenstown, Maryland, 21658 <a href="https://www.google.com/maps/dir//38.9105724,-76.1147488/@38.910491,-76.1149688,397m/data=!3m1!1e3!4m3!4m2!1m0!1m0">map</a></h4>
+	<iframe height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=600%20Aspen%20Ln%2C%20Queenstown%2C%20MD&key=AIzaSyAITlSqVjoxLN0s0XPsmTY6ExvNTw0U66g"></iframe>
+	<p> Feel free to arrive Friday evening and stay until Sunday! </p>
+	<p> Ceremony begins at 5pm on Saturday, but there will be some hang out time beforehand </p>
+	<p> Reception to follow... bring your dancin' shoes! </p>
+
     </div>
     <div id="book-content" style="display: none;" class="subcontent">
-      Links to book
+      Coming Soon
     </div>
     <div id="things-to-do-content" style="display: none;" class="subcontent">
-      Things to do
+      <h1> On Site </h1>
+      <p> Bikes & biking trail</p>
+      <p> Hiking</p>
+      <p> Jogging/fitness trail</p>
+      <p> Table tennis</p>
+      <p> Tennis</p>
+      <p> Volleyball</p>
+      <p> BYO lake activities (If you own any lake equipment you are allowed and encouraged to bring it and take advantage of the lake. Items include: paddle boards, kayaks, fishing poles for catch and release, and boats…leave the giant yachts at home though)</p>
+      <h1> Nearby </h1>
+      <h4>Beaches</h4>
+      <p> Rehoboth Beach, DE (71 miles)</p>
+      <p> Ocean City, MD (96 miles)</p>
+      <h4> Parks </h4>
+      <p> Wye Island Natural Resources Management Area (3 miles)</p>
+      <p> Pintail Point (3 miles)</p>
+      <h4>Dining</h4>
+      <p> Kent Island (XX miles)</p>
+      <h4>Golf</h4>
+      <p> Hunter’s Oak Golf Club (4 miles)</p>
+      <p> Queenstown Harbor (9 miles)</p>
+      <p> Hog Neck Golf Course (17 miles)</p>
+      <h4>Shopping</h4>
+      <p> Queenstown Premium Outlet Mall (XX miles)</p>
+      <h4>Museums</h4>
+      <p> Chesapeake Bay Maritime Museum (30 miles)</p>
     </div>
 
 
@@ -42,9 +76,10 @@
 {% block endscripts %}
   <script src="{{ url_for('static', filename='js/jaffucci.js') }}"> </script>
   <script>
-    $("#hotel-info").click(get_display_content_function("#hotel-info-content"));
-    $("#book").click(get_display_content_function("#book-content"));
-    $("#things-to-do").click(get_display_content_function("#things-to-do-content"));
+    $("#hotel-info").click(get_display_content_function("hotel-info-content"));
+    $("#book").click(get_display_content_function("book-content"));
+    $("#things-to-do").click(get_display_content_function("things-to-do-content"));
+    $(window.location.hash.replace("-content", "")).click();
   </script>
 
 {% endblock %}
