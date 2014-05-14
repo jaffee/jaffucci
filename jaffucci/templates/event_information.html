@@ -20,162 +20,204 @@
       </button>
       <button id="wedding-party" title="Wedding Party">
 	<span> <img height="32px" src="{{ url_for('static', filename='img/wedding_party.png') }}"/> </span>
+	<span> Wedding Party</span>
       </button>
-      <button id="registry" title="Registry">
-	<span> <img height="32px" src="{{ url_for('static', filename='img/registry.png') }}"/> </span>
-	<span> Registry </span>
-      </button>
+      {# <button id="registry" title="Registry"> #}
+      {# 	<span> <img height="32px" src="{{ url_for('static', filename='img/registry.png') }}"/> </span> #}
+      {# 	<span> Registry </span> #}
+      {# </button> #}
     </div>
 
     <div id="ceremony-content" class="subcontent">
-      <h1> Where </h1>
+      <br/>
       <h2> The Aspen Wye River Conference Center</h2>
-      <img width="90%" src="http://cache.marriott.com/propertyimages/b/bwiwy/0-modules/meetings/bwiwy_meeting_type.jpg"/>
       <h4>600 Aspen Drive, Queenstown, Maryland, 21658</h4>
-      <h1> When? </h1>
+      <img width="90%" src="http://cache.marriott.com/propertyimages/b/bwiwy/0-modules/meetings/bwiwy_meeting_type.jpg"/>
+      <br/>
+      <br/>
       <p>Our wedding will be an event to remember! The ceremony will be held on September 13, 2014 at the River House. The reception will be immediately after the ceremony where there will be dinner, desserts, drinks and more dancing than you can handle!</p>
-      <p>We'll be arriving on Friday and leaving Sunday, check out our <a href="{{ url_for('accomodations') }}">accomodations</a> page for info.</p>
+      <br/>
     </div>
     <div id="wedding-party-content" style="display: none;" class="subcontent"> {#  two-col #}
       <div class="left-column">
 	<div class="party-member">
-	  <h3> Travis Martinez </h3>
-	  <h4> Best Man </h4>
+	  <h3>  Travis Martinez </h3>
+	  <h4> BEST MAN </h4>
 	  <img src="{{ url_for('static', filename='img/Travis.jpg') }}"/>
-	  <div class="reside">Reidsville, NC... or the Hampton Inn in Rocky Mount, NC </div>
-	  <div class="fun"> Likes to play basketball and Starcraft with friends. </div>
-	  <div class="forward"> everything about the Jaffuci wedding... particularly seeing friends and family he doesn't see often. </div>
-	  <div class="fact"> Fun Fact - once tied Matt in a 100 backstroke </div>
+	  <div class="blurb-container">
+	    <div class="reside">Reidsville, NC... or the Hampton Inn in Rocky Mount, NC </div>
+	    <div class="fun"> Likes to play basketball and Starcraft with friends. </div>
+	    <div class="forward"> everything about the Jaffuci wedding... particularly seeing friends and family he doesn't see often. </div>
+	    <div class="fact"> Once tied Matt in a 100 backstroke. </div>
+	  </div>
 	</div>
 	<div class="party-member">
 	  <h3> Sam Neher </h3>
-	  <h4> Bridesman </h4>
+	  <h4> BRIDESMAN </h4>
 	  <img height="357px" src="{{ url_for('static', filename='img/Sam.jpg') }}"/>
-	  <div class="reside"> Houston, TX - Home of Beyonce </div>
-	  <div class="fun"> Spend time at the park with Wes, find the best Old Fashioned in Houston, beat Matt and Debbie at any physical activity. </div>
-	  <div class="forward"> Spending time with the bride, groom, and their amazingly fun and sweet families! </div>
-	  <div class="fact">  My first broken bone happened before I could walk. I think that speaks for itself. </div>
+	  <div class="blurb-container">
+	    <div class="reside"> Houston, TX - Home of Beyonce </div>
+	    <div class="fun"> Spend time at the park with Wes, find the best Old Fashioned in Houston, beat Matt and Debbie at any physical activity. </div>
+	    <div class="forward"> Spending time with the bride, groom, and their amazingly fun and sweet families! </div>
+	    <div class="fact">  My first broken bone happened before I could walk. I think that speaks for itself. </div>
+	  </div>
 	</div>
 	<div class="party-member">
 	  <h3> Roderick Mccord Fancher III </h3>
-	  <h4> Groomsman </h4>
+	  <h4> GROOMSMAN </h4>
 	  <img height="357px" src="{{ url_for('static', filename='img/Rod.jpg') }}"/>
-	  <div class="reside"> Philadelphia, PA </div>
-	  <div class="fun">Play video games and read. </div>
-	  <div class="forward">I'm looking forward to an amazing time with some of the greatest people I know at this wedding. And of course the union of the best couple I know of. </div>
-	  <div class="fact"> My favorite animal is a pig. </div>
+	  <div class="blurb-container">
+	    <div class="reside"> Philadelphia, PA </div>
+	    <div class="fun">Play video games and read. </div>
+	    <div class="forward">I'm looking forward to an amazing time with some of the greatest people I know at this wedding. And of course the union of the best couple I know of. </div>
+	    <div class="fact"> My favorite animal is a pig. </div>
+	  </div>
 	</div>
 	<div class="party-member">
 	  <h3> Christine Jaffee</h3>
-	  <h4> Bridesmaid </h4>
+	  <h4> BRIDESMAID </h4>
 	  <img height="357px" src="{{ url_for('static', filename='img/Christine.jpg') }}"/>
-	  <div class="reside"> Hockessin, DE </div>
-	  <div class="fun">  Hiking, playing video games, and playing with my daughter Audrey </div>
-	  <div class="forward"> Seeing my brother and Debbie exchanging rings and saying I DO! </div>
-	  <div class="fact"> Sister of the Groom! </div>
+	  <div class="blurb-container">
+	    <div class="reside"> Hockessin, DE </div>
+	    <div class="fun">  Hiking, playing video games, and playing with my daughter Audrey </div>
+	    <div class="forward"> Seeing my brother and Debbie exchanging rings and saying I DO! </div>
+	    <div class="fact"> Sister of the Groom! </div>
+	  </div>
 	</div>
 	<div class="party-member">
 	  <h3> Keriann Engle </h3>
-	  <h4> Bridesmaid </h4>
+	  <h4> BRIDESMAID </h4>
 	  <img height="357px" src="{{ url_for('static', filename='img/Keriann.jpg') }}"/>
-	  <div class="reside"> Los Angeles </div>
-	  <div class="fun"> Running, cooking, reading, playing guitar, and listening to live music.n </div>
-	  <div class="forward"> Spending time with one of my best friends and watching her marry the love of her life. </div>
-	  <div class="fact">I was the one millionth fan to enter Tiger Stadium during the 1989-1990 baseball season, and won season tickets for the next season and one of every Tigers souvenir. </div>
+	  <div class="blurb-container">
+	    <div class="reside"> Los Angeles </div>
+	    <div class="fun"> Running, cooking, reading, playing guitar, and listening to live music.n </div>
+	    <div class="forward"> Spending time with one of my best friends and watching her marry the love of her life. </div>
+	    <div class="fact">I was the one millionth fan to enter Tiger Stadium during the 1989-1990 baseball season, and won season tickets for the next season and one of every Tigers souvenir. </div>
+	  </div>
 	</div>
 	<div class="party-member">
 	  <h3>  Bill Santucci </h3>
-	  <h4> Father of the Bride </h4>
+	  <h4> FATHER OF THE BRIDE </h4>
 	  <img height="357px" src="{{ url_for('static', filename='img/BillS.jpg') }}"/>
-	  <div class="reside"> Chandler, AZ </div>
-	  <div class="fun">  Golf in the Wednesday night Summer Golf League, having lunch with the neighbors in Payson, taking Annie for walks so she can see her friends, snorkeling in Maui, walking the beaches in Florida, fishing, playing table games during the holidays with family and bicycling the neighborhood with Nancy. </div>
-	  <div class="forward">  Going to someplace I've never been to on the East coast, seeing everybody together at the wedding and reception, dancing and of course seeing Debbie and Matt get married.  </div>
-	  <div class="fact">Has a man cave full of fishing rods and golf clubs</div>
+	  <div class="blurb-container">
+	    <div class="reside"> Chandler, AZ </div>
+	    <div class="fun">  Golf in the Wednesday night Summer Golf League, having lunch with the neighbors in Payson, taking Annie for walks so she can see her friends, snorkeling in Maui, walking the beaches in Florida, fishing, playing table games during the holidays with family and bicycling the neighborhood with Nancy. </div>
+	    <div class="forward">  Going to someplace I've never been to on the East coast, seeing everybody together at the wedding and reception, dancing and of course seeing Debbie and Matt get married.  </div>
+	    <div class="fact">Has a man cave full of fishing rods and golf clubs</div>
+	  </div>
 	</div>
 	<div class="party-member">
 	  <h3>  Nancy Santucci </h3>
-	  <h4> Mother of the Bride </h4>
+	  <h4> MOTHER OF THE BRIDE </h4>
 	  <img height="357px" src="{{ url_for('static', filename='img/Nancy.jpg') }}"/>
-	  <div class="reside"></div>
-	  <div class="fun"> I like to ride my bike downhill at crazy speeds, dance, travel, and go places with friends.  I enjoy music, photography, playing games, cooking, and decorating.  Most of all I like being with family and friends, especially when they are in Florida, or Hawaii. </div>
-	  <div class="forward">The Jaffucci wedding means we will officially join our two families.   We look forward to seeing Debbie and Matt experience their lives together, watching them create a home and a family of their own. and seeing them bring happiness to each other and to those they know. </div>
-	  <div class="fact"> For Halloween, Nancy once made Debbie an elaborate pink jeweled horse and She Ra costume. Once it was finished, Debbie decided she wanted to wear her old bride costume instead.</div>
+	  <div class="blurb-container">
+	    <div class="reside"> Chandler, AZ</div>
+	    <div class="fun"> I like to ride my bike downhill at crazy speeds, dance, travel, and go places with friends.  I enjoy music, photography, playing games, cooking, and decorating.  Most of all I like being with family and friends, especially when they are in Florida, or Hawaii. </div>
+	    <div class="forward">The Jaffucci wedding means we will officially join our two families.   We look forward to seeing Debbie and Matt experience their lives together, watching them create a home and a family of their own. and seeing them bring happiness to each other and to those they know. </div>
+	    <div class="fact"> For Halloween, Nancy once made Debbie an elaborate pink jeweled horse and She Ra costume. Once it was finished, Debbie decided she wanted to wear her old bride costume instead.</div>
+	  </div>
+	</div>
+	<div class="party-member">
+	  <h3>  Michael Jaffee </h3>
+	  <h4> GROOMSMAN </h4>
+	  <img height="357px" src="{{ url_for('static', filename='img/Mike.jpg') }}"/>
+	  <div class="blurb-container">
+	    <div class="reside"> Wherever FEMA sends him. </div>
+	    <div class="fun"></div>
+	    <div class="forward"></div>
+	    <div class="fact"> </div>
+	  </div>
 	</div>
       </div>
       <div class="right-column">
 	<div class="party-member">
 	  <h3> Malika Tukibayeva </h3>
-	  <h4> Maid of Honor  </h4>
+	  <h4> MAID OF HONOR  </h4>
 	  <img height="357px" src="{{ url_for('static', filename='img/Malika.jpg') }}"/>
-	  <div class="reside">  </div>
-	  <div class="fun">  </div>
-	  <div class="forward">  </div>
-	  <div class="fact">  </div>
+	  <div class="blurb-container">
+	    <div class="reside">  </div>
+	    <div class="fun">  </div>
+	    <div class="forward">  </div>
+	    <div class="fact">  </div>
+	  </div>
 	</div>
 	<div class="party-member">
 	  <h3> Robert Santucci </h3>
-	  <h4> Groomsman </h4>
+	  <h4> GROOMSMAN </h4>
 	  <img height="357px" src="{{ url_for('static', filename='img/Bob.jpg') }}"/>
-	  <div class="reside"> Gilbert, AZ </div>
-	  <div class="fun"> Play ice hockey, drive my shifter kart, and workout. </div>
-	  <div class="forward">Seeing my sister get married.</div>
-	  <div class="fact">Matt may be the best at any post-1990 video game, but his weakness is the good old original Nintendo.</div>
+	  <div class="blurb-container">
+	    <div class="reside"> Gilbert, AZ </div>
+	    <div class="fun"> Play ice hockey, drive my shifter kart, and workout. </div>
+	    <div class="forward">Seeing my sister get married.</div>
+	    <div class="fact">Matt may be the best at any post-1990 video game, but his weakness is the good old original Nintendo.</div>
+	  </div>
 	</div>
 	<div class="party-member">
 	  <h3> Guilherme Fernandes </h3>
-	  <h4> Groomsman </h4>
+	  <h4> GROOMSMAN </h4>
 	  <img height="357px" src="{{ url_for('static', filename='img/G.jpg') }}"/>
-	  <div class="reside">Mountain View, CA </div>
-	  <div class="fun">Mixology and Gaming with friends</div>
-	  <div class="forward">Hanging out with the Jaffucci's again and seeing how nervous Matt gets over the wedding :D</div>
-	  <div class="fact">Born and raised in Panama and Brasil</div>
+	  <div class="blurb-container">
+	    <div class="reside">Mountain View, CA </div>
+	    <div class="fun">Mixology and Gaming with friends</div>
+	    <div class="forward">Hanging out with the Jaffucci's again and seeing how nervous Matt gets over the wedding :D</div>
+	    <div class="fact">Born and raised in Panama and Brasil</div>
+	  </div>
 	</div>
 	<div class="party-member">
 	  <h3> Kristine Fargotstein </h3>
-	  <h4> Officiant </h4>
+	  <h4> OFFICIANT </h4>
 	  <img height="357px" src="{{ url_for('static', filename='img/Kristine.jpg') }}"/>
-	  <div class="reside">  </div>
-	  <div class="fun">  </div>
-	  <div class="forward">  </div>
-	  <div class="fact">  </div>
+	  <div class="blurb-container">
+	    <div class="reside"> Washington, DC  </div>
+	    <div class="fun"> Ride my awesome pink beach cruiser around the Hill to meet friends for baseball games or happy hours or outdoor concerts</div>
+	    <div class="forward"> Literally marrying one of my best friends. </div>
+	    <div class="fact">I was born green?</div>
+	  </div>
 	</div>
 	<div class="party-member">
 	  <h3>  Brennon York </h3>
-	  <h4> Officiant </h4>
+	  <h4> OFFICIANT </h4>
 	  <img height="357px" src="{{ url_for('static', filename='img/Brennon.jpg') }}"/>
-	  <div class="reside"> </div>
-	  <div class="fun">  </div>
-	  <div class="forward">  </div>
-	  <div class="fact">  </div>
+	  <div class="blurb-container">
+	    <div class="reside"> </div>
+	    <div class="fun">  </div>
+	    <div class="forward">  </div>
+	    <div class="fact">  </div>
+	  </div>
 	</div>
 	<div class="party-member">
 	  <h3>  Audrey </h3>
-	  <h4> Flower Girl </h4>
+	  <h4> FLOWER GIRL </h4>
 	  <img height="357px" src="{{ url_for('static', filename='img/Audrey.jpg') }}"/>
-	  <div class="reside"> Hockessin, DE </div>
-	  <div class="fun">  She likes to play with her dogs and cats, playing at the park, and eating lots of food. </div>
-	  <div class="forward"> She is looking forward to throwing flower petals and eating cake at the wedding. </div>
-	  <div class="fact"> </div>
+	  <div class="blurb-container">
+	    <div class="reside"> Hockessin, DE </div>
+	    <div class="fun">  She likes to play with her dogs and cats, playing at the park, and eating lots of food. </div>
+	    <div class="forward"> She is looking forward to throwing flower petals and eating cake at the wedding. </div>
+	    <div class="fact"> </div>
+	  </div>
 	</div>
 	<div class="party-member">
 	  <h3>  Barbara Jaffee </h3>
-	  <h4> Mother of the Groom </h4>
+	  <h4> MOTHER OF THE GROOM </h4>
 	  <img height="357px" src="{{ url_for('static', filename='img/Barbara.jpg') }}"/>
-	  <div class="reside"> Hockessin, DE </div>
-	  <div class="fun">  </div>
-	  <div class="forward"> </div>
-	  <div class="fact"> </div>
+	  <div class="blurb-container">
+	    <div class="reside"> Hockessin, DE </div>
+	    <div class="fun">  </div>
+	    <div class="forward"> </div>
+	    <div class="fact"> </div>
+	  </div>
 	</div>
 	<div class="party-member">
 	  <h3>  William Jaffee </h3>
-	  <h4> Father of the Groom </h4>
+	  <h4> FATHER OF THE GROOM </h4>
 	  <img height="357px" src="{{ url_for('static', filename='img/BillJ.jpg') }}"/>
-	  <div class="reside"> Hockessin, DE </div>
-	  <div class="fun">  </div>
-	  <div class="forward"> </div>
-	  <div class="fact"> </div>
+	  <div class="blurb-container">
+	    <div class="reside"> Hockessin, DE </div>
+	    <div class="fun">  </div>
+	    <div class="forward"> </div>
+	    <div class="fact"> </div>
+	  </div>
 	</div>
-
       </div>
       <br class="clear"/>
     </div>

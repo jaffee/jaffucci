@@ -3,25 +3,49 @@
 {% block scripts %}
   <style type="text/css">
     html {
-    background: url(/static/img/us_plane.jpg) no-repeat center center;
+    background: url(/static/img/couch0.jpg) no-repeat center -80px;
     background-size: cover;
     }
   </style>
 {% endblock %}
 {% block body %}
-  <table class="timer-container">
-    <tr>
-      <td class="button-link"><div id="days"></div> <p>Days</p></td>
-      <td class="button-link"> <div id="hours"></div> <p>Hours</p></td>
-      <td class="button-link"><div id="minutes"></div> <p>Minutes</p></td>
-      <td class="button-link"><div id="seconds"></div> <p>Seconds</p></td>
-    </tr>
-  </table>
+  <div id="countdown">
+    <h1> Wedding Countdown </h1>
+    <p id="tiny-text"> (click these!)</p>
+    <table class="timer-container">
+      <tr>
+	<td id="daysbutton" class="button-link"><div id="days"></div> <p>Days</p></td>
+	<td id="hoursbutton" class="button-link"> <div id="hours"></div> <p>Hours</p></td>
+	<td id="minutesbutton" class="button-link"><div id="minutes"></div> <p>Minutes</p></td>
+	<td id="secondsbutton" class="button-link"><div id="seconds"></div> <p>Seconds</p></td>
+      </tr>
+    </table>
+  </div>
 {% endblock %}
 
 {% block endscripts %}
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="{{ url_for('static', filename='js/countdown.js') }}" type="text/javascript"></script>
+  <script>
+   var ran = getRandomInt(0, 6);
+   console.log(ran);
+   $("#daysbutton").click(function () {
+     $("html").css({"background": "url(/static/img/couch" + getRandomInt(0, 5) + ".jpg) no-repeat center -80px",
+		    "background-size": "cover"});
+   });
+   $("#hoursbutton").click(function () {
+     $("html").css({"background": "url(/static/img/couch2.jpg) no-repeat center -80px",
+		    "background-size": "cover"});
+   });
+   $("#minutesbutton").click(function () {
+     $("html").css({"background": "url(/static/img/couch3.jpg) no-repeat center -80px",
+		    "background-size": "cover"});
+   });
+   $("#secondsbutton").click(function () {
+     $("html").css({"background": "url(/static/img/couch4.jpg) no-repeat center -80px",
+		    "background-size": "cover"});
+   });
+  </script>
 {% endblock %}
 
 	{# {% block header %} #}

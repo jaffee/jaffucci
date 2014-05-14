@@ -22,3 +22,7 @@ function timer()
   $("#minutes").text(Math.round(minutes));
   $("#seconds").text(Math.round(seconds));
 }
+
+function getRandomInt(min, max) {
+  return Math.floor(Math.random() * (max - min + 1)) + min;
+}

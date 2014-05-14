@@ -2,8 +2,28 @@
     font-family: "Chopin Script";
     src: url('/static/fonts/ChopinScript.ttf') format("truetype");
 }
+
+@font-face {
+    font-family: 'BlanchCapsRegular';
+    src: url('fonts/blanch_caps-webfont.eot');
+    src: url('fonts/blanch_caps-webfont.eot?#iefix') format('embedded-opentype'),
+         url('fonts/blanch_caps-webfont.woff') format('woff'),
+         url('fonts/blanch_caps-webfont.ttf') format('truetype'),
+         url('fonts/blanch_caps-webfont.svg#BlanchCapsRegular') format('svg');
+    font-weight: normal;
+    font-style: normal;
+
+}
+
 h1 {
-    text-shadow: 1px 1px 1px #333;
+    color: #2c2c2c;
+}
+
+h2 {
+    color: #2c2c2c;
+}
+h3 {
+    color: #2c2c2c;
 }
 
 div img {
@@ -33,10 +53,35 @@ button img {
 
 html,
 body {
-    font-family: 'Helvetica Neue', Helvetica, Arial, sans-serif;
+    font-family: 'Raleway', sans-serif;
     height: 100%;
+    color:#3c3c3c;
     margin:0px;
     padding:0px;
+//'Helvetica Neue', Helvetica, Arial, sans-serif;
+}
+
+#countdown {
+    width:500px;
+    height:100px;
+    float: right;
+    margin-right: 10%;
+    margin-top: 10%;
+    background: rgba(255,181,215,0.95);
+    border-radius: 6px;
+    padding: 20px;
+}
+
+#countdown p {
+    color: black;
+}
+
+
+p {
+    font-family: 'Raleway', sans-serif;
+    font-size: 20px;
+    color:#4c4c4c;
+//    line-height:36px;
 }
 
 #header-container {
@@ -69,7 +114,7 @@ body {
 
 .main-title {
     position: relative;
-    background-color:rgba(228,228,228,0.98);
+//    background-color:rgba(228,228,228,0.98);
     display: inline-block;
     border-radius: 30;
     border-top-left-radius: 0;
@@ -77,7 +122,7 @@ body {
     padding-left: 10px;
     padding-right: 10px;
     margin: 0 auto;
-    box-shadow: 0px 1px 4px 2px rgba(20,20,20,0.5);
+//    box-shadow: 0px 1px 4px 2px rgba(20,20,20,0.5);
     z-index: 10;
     /* box-shadow: 3px 3px 1px 0px rgba(20,20,20,0.5); */
 }
@@ -129,35 +174,37 @@ body {
 
 .inner-nav {
     height: 50px;
-    background-color:rgba(228,228,228,0.98);
-    box-shadow: 0px 4px 4px -2px rgba(20,20,20,0.5);
+ //   background-color:rgba(228,228,228,0.98);
+//    box-shadow: 0px 4px 4px -2px rgba(20,20,20,0.5);
 }
 
 .inner-nav > a {
 /*    background-color:rgba(99,221,233,0.95);*/
     display: inline-block;
+    color: #222222;
+    font-family: "Chopin Script";
     text-decoration: none;
-    text-shadow: 0 1px 0 rgba(0, 0, 0, 0.7);
+    background-color: rgba(230,230,230,0.99);
+    padding-left: 4px;
+    padding-right: 4px;
+    border-bottom-right-radius: 10px;
+    border-bottom-left-radius: 10px;
+//    text-shadow: 1px 1px 0px #333;
 /*    border: solid 1px rgba(69,191,203,1); */
-    font-size: 16px;
-    color: black;
-    vertical-align: top;
-    box-shadow:   0px -1px 8px 1px rgba(20,20,20,0.5);
-    padding: 10px 15px;
-    height: 30px;
+    font-size: 40px;
+    box-shadow:   0px -1px 8px 1px rgba(20,20,20,0.99);
 }
 
 
 div.right-nav > div > a:first-child {
-    margin-right: 20%;
 }
 
 div.left-nav > div > a:last-child {
-    margin-left: 20%;
 }
 
 .inner-nav > a:hover {
-    background-color:rgba(240,240,240,0.98);
+    background-color: #63dbe9;
+    //background-color:rgba(240,240,240,0.98);
 }
 
 .inner-nav > a:active {
@@ -176,17 +223,11 @@ a {
 }
 
 .timer-container {
-    width:500px;
-    height:100px;
-    position:absolute;
-    left:50%;
-    top:50%;
-    margin:-50px 0 0 -250px;
 }
 
 .timer-container td {
-    background-color: rgba(172,31,110,0.9); /* #ac1f6e; */
-    border-color: #AC1F6E;
+    background-color: rgba(172,31,110,1); /* #ac1f6e; */
+    border-color: #63dbe9;
     width: 150px;
     height: 100px;
     text-align: center;
@@ -195,6 +236,16 @@ a {
 
 .timer-container td > p {
     font-size: 16;
+    margin-bottom: 0px;
+}
+
+#tiny-text {
+    line-height: 10px;
+    font-size: 10px;
+    padding: 0px;
+    padding-right: 10px;
+    margin: 0px;
+    text-align: right;
 }
 
 .bottom-container > table {
@@ -216,7 +267,7 @@ a {
 
 .button-link {
     padding: 10px 15px;
-    background: #4479BA;
+    background: #63dbe9;
     color: #FFF;
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
@@ -235,7 +286,7 @@ a {
     user-select:none;
 }
 .button-link:hover {
-    background: #049a7d;
+    background: #63dbe9;
     border: solid 1px #2A4E77;
     text-decoration: none;
 }
@@ -271,9 +322,14 @@ button span {
 
 .subcontent p {
     margin: 0 auto;
+    width: 80%;
     margin-top: 10px;
-    width: 50%;
     text-align: left;
+}
+
+#river-house {
+    height: 336;
+    width: 550;
 }
 
 .subcontent iframe {
@@ -286,7 +342,7 @@ div.button-container button {
     -webkit-border-radius: 4px;
     -moz-border-radius: 4px;
     border-radius: 4px;
-    border: solid 1px;
+    border: solid 1px #63dbe9;
 //    text-shadow: 0 -1px 0 rgba(0, 0, 0, 0.4);
     -webkit-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
     -moz-box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.4), 0 1px 1px rgba(0, 0, 0, 0.2);
@@ -300,7 +356,7 @@ div.button-container button {
     user-select:none;
 }
 div.button-container button:hover {
-    background: #049a7d;
+    background: #63dbe9;
     /*border: solid 1px #2A4E77;*/
     text-decoration: none;
 }
@@ -316,6 +372,8 @@ div.party-member {
     box-shadow:         0px 0px 3px 4px rgba(20,20,20,0.5);
     border-radius: 6px;
 }
+
+
 
 div.left-column div.party-member {
     margin-left: 4%;
@@ -339,10 +397,15 @@ div.party-member img {
     margin-bottom: 15px;
 }
 
-div.party-member div {
+div.blurb-container div {
     text-align: left;
     margin: 4px 20px;
     padding-top: 4px;
+    height: 32px;
+}
+
+div.reside {
+    height: 16px !important;
 }
 
 div.party-member div:last-child {
@@ -350,13 +413,17 @@ div.party-member div:last-child {
 }
 
 div.party-member h3 {
-    font-size: 1.8em;
-    text-shadow: 1px 1px 1px #333;
+    font-family: 'Chopin Script';
+    font-size: 3.2em; //1.8em
+//    text-shadow: 1px 1px 1px #333;
     padding-top: 20px;
     margin-bottom: 10px;
 }
 
 div.party-member h4 {
+    font-family: 'Century Gothic','Avant Garde Gothic','Avant Garde','URW Gothic L',helvetica,sans-serif;
+    font-weight: normal;
+    letter-spacing: 2px;
     font-size: 1.2em;
 //    text-shadow: 1px 1px 0px #000;
     margin-top: 0px;
