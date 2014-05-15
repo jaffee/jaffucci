@@ -4,7 +4,7 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.0/jquery.min.js"></script>
   <style type="text/css">
     html {
-    background: linear-gradient(rgba(255,255,255,0.4),rgba(255,255,255,0.5)), url(/static/img/accomodations_bg2.jpg) no-repeat center center;
+    background: linear-gradient(rgba(255,255,255,1),rgba(255,255,255,0) 50%) fixed, url(/static/img/accomodations_bg2.jpg) no-repeat center center fixed;
     background-size: cover;
     }
   </style>
@@ -16,26 +16,26 @@
     <div class="button-container">
       <button id="hotel-info">
 	<span> <img height="32px" src="{{ url_for('static', filename='img/hotel.png') }}"/> </span>
-	<span> Hotel Info </span>
+	<span> Hotel & Event Location </span>
       </button>
-      <button id="book">
-	<span> <img height="32px" src="{{ url_for('static', filename='img/book.png') }}"/> </span>
-	<span> Book Now </span>
-      </button>
+{#      <button id="book"> #}
+{#	<span> <img height="32px" src="{{ url_for('static', filename='img/book.png') }}"/> </span> #}
+{#	<span> Book Now </span> #}
+{#      </button> #}
       <button id="things-to-do">
 	<span> <img height="32px" src="{{ url_for('static', filename='img/thingstodo.png') }}"/> </span>
 	<span> Things To Do </span>
       </button>
     </div>
     <div id="hotel-info-content" class="subcontent">
-      <h1> Aspen Wye River Conference Center </h1>
+      <h1> River House at the Aspen Wye River Conference Center </h1>
 
       <h4> 600 Aspen Drive, Queenstown, Maryland, 21658 <a href="https://www.google.com/maps/dir//38.9105724,-76.1147488/@38.910491,-76.1149688,397m/data=!3m1!1e3!4m3!4m2!1m0!1m0">map</a></h4>
 	<iframe height="450" frameborder="0" style="border:0" src="https://www.google.com/maps/embed/v1/place?q=600%20Aspen%20Ln%2C%20Queenstown%2C%20MD&key=AIzaSyAITlSqVjoxLN0s0XPsmTY6ExvNTw0U66g"></iframe>
-	<p> Feel free to arrive Friday evening and stay until Sunday! </p>
-	<p> Ceremony begins at 5pm on Saturday, but there will be some hang out time beforehand </p>
-	<p> Reception to follow... bring your dancin' shoes! </p>
-
+	<br/>
+	<br/>
+	<p> Guests will be provided the option to book their accomodations at the River House upon receipt of formal invitation. </p>
+	<p> We invite you to arrive on Friday and stay until Sunday, so that you can take advantage of all the fun things to do on-site and in the area. But, don't forget about the wedding festivities which will begin Saturday evening! </p>
     </div>
     <div id="book-content" style="display: none;" class="subcontent">
       Coming Soon
@@ -57,13 +57,13 @@
       <p> Wye Island Natural Resources Management Area (3 miles)</p>
       <p> Pintail Point (3 miles)</p>
       <h4>Dining</h4>
-      <p> Kent Island (XX miles)</p>
+      <p> Kent Island (15 miles)</p>
       <h4>Golf</h4>
       <p> Hunter’s Oak Golf Club (4 miles)</p>
       <p> Queenstown Harbor (9 miles)</p>
       <p> Hog Neck Golf Course (17 miles)</p>
       <h4>Shopping</h4>
-      <p> Queenstown Premium Outlet Mall (XX miles)</p>
+      <p> Queenstown Premium Outlet Mall (7 miles)</p>
       <h4>Museums</h4>
       <p> Chesapeake Bay Maritime Museum (30 miles)</p>
     </div>

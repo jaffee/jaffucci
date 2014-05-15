@@ -1,7 +1,30 @@
 {% extends "base.html" %}
 
+{% block scripts %}
+<script src="{{ url_for('static', filename='js/dropzone.js') }}"></script>
+<script>
+Dropzone.options.imageForm = {
+  paramName: "file", // The name that will be used to transfer the file
+  maxFilesize: 30, // MB
+  dictDefaultMessage: "Drag and Drop an image, or click here."
+};
+</script>
+  <style type="text/css">
+    html {
+    background: linear-gradient(rgba(255,255,255,1),rgba(255,255,255,0.7) 20%,rgba(255,255,255,0) 100%)  fixed, url(/static/img/happy_hour/lake1.jpg) no-repeat center center fixed;
+    background-size: cover;
+    }
+  </style>
+{% endblock %}
+
+
 {% block body %}
   <div id="happy-hour-container">
-    Coming Soon
+      <form action="{{ url_for('images') }}" class="dropzone" id="imageForm">
+	<p> We'd love it if you would share photos with us... anything you've got that's Jaffucci related! </p>
+	<div class="fallback">
+	  <input name="files" type="file" multiple />
+	</div>
+      </form>
   </div>
 {% endblock %}

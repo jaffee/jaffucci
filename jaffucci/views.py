@@ -1,5 +1,7 @@
 from jaffucci import app, forms, user, db
-from flask import redirect, render_template, url_for, flash, request, g
+from flask import redirect, render_template, url_for, flash, request, g, send_from_directory
+from werkzeug import secure_filename
+import os
 
 
 from flask_login import (login_user, logout_user, flash, login_required,
@@ -58,6 +60,28 @@ def happy_hour():
     return render_template("happy_hour.html",
                            title="Happy Hour",
                            selected={"happy_hour": "selected"})
+
+@app.route('/images', methods=['GET', 'POST'])
+def images():
+    # Get the name of the uploaded files
+    uploaded_files = request.files.getlist("file")
+    print uploaded_files
+    filenames = []
+    for f in uploaded_files:
+        # Check if the file is one of the allowed types/extensions
+        if f:
+            # Make the filename safe, remove unsupported chars
+            filename = secure_filename(f.filename)
+            # Move the file form the temporal folder to the upload
+            # folder we setup
+            f.save(os.path.join(app.config['UPLOAD_FOLDER'], filename))
+            # Save the filename into a list, we'll use it later
+            filenames.append(filename)
+            # Redirect the user to the uploaded_file route, which
+            # will basicaly show on the browser the uploaded file
+    # Load an html page with a link to each uploaded file
+    return redirect(url_for('happy_hour'))
+
 
 @app.route('/image_check')
 @login_required

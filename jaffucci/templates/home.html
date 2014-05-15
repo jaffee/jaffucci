@@ -3,11 +3,26 @@
 {% block scripts %}
   <style type="text/css">
     html {
-    background: url(/static/img/couch0.jpg) no-repeat center -80px;
-    background-size: cover;
+//    background: url(/static/img/couch0.jpg) no-repeat center -80px;
+//    background-size: cover;
     }
   </style>
 {% endblock %}
+{% block beginbody %}
+  <div id="couch0" class="couch0 background"> </div>
+  <div id="couch1" class="couch1 background" style="opacity:0;">  </div>
+  <div id="couch2" class="couch2 background" style="opacity:0;">  </div>
+  <div id="couch3" class="couch3 background" style="opacity:0;">  </div>
+  <div id="couch4" class="couch4 background" style="opacity:0;">  </div>
+  <div id="couch5" class="couch5 background" style="opacity:0;">  </div>
+  <div id="couch6" class="couch6 background" style="opacity:0;">  </div>
+  <div id="couch7" class="couch7 background" style="opacity:0;">  </div>
+  <div id="couch8" class="couch8 background" style="opacity:0;">  </div>
+  <div id="couch9" class="couch9 background" style="opacity:0;">  </div>
+  <div id="couch10" class="couch10 background" style="opacity:0;">  </div>
+{% endblock %}
+
+
 {% block body %}
   <div id="countdown">
     <h1> Wedding Countdown </h1>
@@ -27,78 +42,36 @@
   <script src="//ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js"></script>
   <script src="{{ url_for('static', filename='js/countdown.js') }}" type="text/javascript"></script>
   <script>
-   var ran = getRandomInt(0, 6);
-   console.log(ran);
+    var i = 0;
+   var j = 10;
    $("#daysbutton").click(function () {
-     $("html").css({"background": "url(/static/img/couch" + getRandomInt(0, 5) + ".jpg) no-repeat center -80px",
-		    "background-size": "cover"});
+     //     $("html").css({"background": "url(/static/img/couch" + getRandomInt(0, 5) + ".jpg) no-repeat center -80px",
+     //		    "background-size": "cover"});
+     var ran = getRandomInt(0, 10);
+     console.log(ran);
+     $(".background").css("opacity", 0);
+     $("#couch" + ran).css("opacity", 1);
    });
    $("#hoursbutton").click(function () {
-     $("html").css({"background": "url(/static/img/couch2.jpg) no-repeat center -80px",
-		    "background-size": "cover"});
+     i = (i + 1) % 11;
+     console.log(i);
+     $(".background").css("opacity", 0);
+     $("#couch" + i).css("opacity", 1);
    });
    $("#minutesbutton").click(function () {
-     $("html").css({"background": "url(/static/img/couch3.jpg) no-repeat center -80px",
-		    "background-size": "cover"});
+     j = (j - 1);
+     if (j == -1) {
+       j = 10;
+     }
+     console.log(j);
+     $(".background").css("opacity", 0);
+     $("#couch" + j).css("opacity", 1);
    });
    $("#secondsbutton").click(function () {
-     $("html").css({"background": "url(/static/img/couch4.jpg) no-repeat center -80px",
-		    "background-size": "cover"});
+     var ran = getRandomInt(0, 10);
+     console.log(ran);
+     $(".background").css("opacity", 0);
+     $("#couch" + ran).css("opacity", 1);
    });
   </script>
 {% endblock %}
-
-	{# {% block header %} #}
-	{#   <div class="header"> #}
-	{#     <h1> {{ elements["masthead"] }} </h1> #}
-	{#   </div> #}
-	{#   {% block navbar %} #}
-	{#     {% if current_user.get_id() %} #}
-	{#       {% if current_user.get_id()|length < 50 %} <!-- hack to determine if user is admin XXX TODO --> #}
-	{# 	<div class=navbar> #}
-	{# 	  <a href="{{ url_for('admin_accounts') }}"> Accounts </a> #}
-	{# 	  <a href="{{ url_for('admin_configure') }}"> Configure </a> #}
-	{# 	  <a href="{{ url_for('admin_reporting') }}"> Reporting </a> #}
-	{# 	  <a href="{{ url_for('admin_testing') }}"> Testing </a> #}
-	{# 	  <a href="{{ url_for('admin_testing_setup') }}"> Testing Setup </a> #}
-	{# 	  <a href="{{ url_for('admin_about') }}"> About </a> #}
-	{# 	</div> #}
-	{#       {% endif %} #}
-	{#     {% endif %} #}
-	{#   {% endblock %} #}
-	{#   {% with messages = get_flashed_messages() %} #}
-	{#     {% if messages %} #}
-	{#       <div class=flashes> #}
-	{# 	{% for message in messages %} #}
-	{# 	  {{ message }}<br> #}
-	{# 	{% endfor %} #}
-	{#       </div> #}
-	{#     {% endif %} #}
-	{#   {% endwith %} #}
-
-	{#   <div class="toplinks"> #}
-	{#     {% if current_user.get_id() %} #}
-	{#       <div class="logged_in"> Logged in as {{current_user.get_id()|truncate(10,True)}}</div> #}
-	{#     {% block logoutlink %} #}
-	{#       <a href="{{ url_for('logout') }}">Logout</a> #}
-	{#     {% endblock %} #}
-	{#     {% endif %} #}
-
-	{#     {% block helplink %} #}
-	{#       <a href="{{ url_for('help') }}"> Need Help?</a> #}
-	{#     {% endblock %} #}
-	{#   </div> #}
-	{# {% endblock %} #}
-	{# {% block content %} #}
-	{#   <div id="content"> #}
-	{#     <div class="pgtitle"> #}
-	{#       {% block pgtitle %} {{ pgtitle }} {% endblock %} #}
-	{#     </div> #}
-	{#     <div class="pg_subtitle"> #}
-	{#       {% block pg_subtitle %} {{ pg_subtitle }} {% endblock %} #}
-	{#     </div> #}
-	{#   </div> #}
-	{#   {% block page %} #}
-	{#     <!-- placeholder --> #}
-	{#   {% endblock %} #}
-	{# {% endblock %} #}
