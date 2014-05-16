@@ -501,7 +501,7 @@ div.blurb-container div {
 }
 
 .blurb-container {
-    height: 200px;
+    min-height: 200px;
 }
 
 
