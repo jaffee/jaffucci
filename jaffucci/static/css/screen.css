@@ -700,3 +700,14 @@ div.two-col div {
 .footer-box span {
     vertical-align: center;
 }
+
+#blog-link {
+    float:right;
+    color: #4c4c4c;
+    line-height: 36px;
+    background-color:rgba(240,240,240,0.7);
+    border-top-left-radius: 6px;
+    border-bottom-left-radius: 6px;
+    box-shadow: -1px 0px 1px 1px rgba(0,0,0,0.6);
+    padding: 0px 4px;
+}

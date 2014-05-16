@@ -19,6 +19,11 @@ Dropzone.options.imageForm = {
 
 
 {% block body %}
+  <div id="blog-link">
+  <a href="http://jaffucci.com/blog">
+    Check out our wedding blog!
+  </a>
+  </div>
   <div id="happy-hour-container">
       <form action="{{ url_for('images') }}" class="dropzone" id="imageForm">
 	<p> We'd love it if you would share photos with us... anything you've got that's Jaffucci related! </p>
