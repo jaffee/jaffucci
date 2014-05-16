@@ -7,3 +7,5 @@ include/
 *.egg-info
 local/
 jaffucci/static/img-backup/
+jaffucci/static/js-backup/
+uploaded/
