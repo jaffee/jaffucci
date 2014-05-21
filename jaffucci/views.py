@@ -86,7 +86,13 @@ def images():
 @app.route('/image_check')
 @login_required
 def image_check():
-    return "super secret", 200
+    upload_dir = app.config["UPLOAD_FOLDER"]
+    images = os.listdir(upload_dir)
+    return render_template("image_check.html",
+                           title="Image Check",
+                           images=images,
+                           selected={})
+
 
 
 @app.route('/login', methods=['GET', 'POST'])
@@ -102,4 +108,5 @@ def login():
             return redirect(request.args.get("next") or url_for("home"))
 
     return render_template("login.html",
+                           selected={},
                            form=form)
