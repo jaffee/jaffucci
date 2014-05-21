@@ -711,3 +711,7 @@ div.two-col div {
     box-shadow: -1px 0px 1px 1px rgba(0,0,0,0.6);
     padding: 0px 4px;
 }
+
+#image_check img {
+    max-width: 1800px;
+}

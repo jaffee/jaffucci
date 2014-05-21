@@ -1,8 +1,9 @@
 {% extends "base.html" %}
 
 {% block body %}
+<div id="image_check">
 {% for img in images %}
   <img src="{{ url_for('static', filename='uploaded/' + img) }}"/>
 {% endfor %}
-
+</div>
 {% endblock %}
