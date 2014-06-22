@@ -75,6 +75,8 @@ def import_guests(filename):
         print reader.next()
         group = None
         for row in reader:
+            if not row[0]:
+                continue
             if row[1]:
                 if group:
                     db.groups.save(group)
@@ -91,6 +93,7 @@ def import_guests(filename):
                 "entree": "",
             }
             db.guests.save(guest)
+        db.groups.save(group)
 
 # class UnicodeCsvReader(object):
 #     def __init__(self, f, encoding="utf-8", **kwargs):
