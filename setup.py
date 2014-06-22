@@ -12,5 +12,6 @@ setup(
         'Flask-Mail',
         'wtforms',
         'docopt',
+        'requests',
 	],
 )

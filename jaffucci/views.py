@@ -3,6 +3,7 @@ import jaffucci.db as db # import db
 from flask import redirect, render_template, url_for, flash, request, g, send_from_directory, session
 from werkzeug import secure_filename
 import os
+import requests
 
 
 from flask_mail import Mail, Message
@@ -56,28 +57,20 @@ def rsvp_form():
     guests = db.guests.find({"name": {"$in": group["guest-names"]}})
     guests = [g for g in guests]
     form = F.get(guests)
-    # print session['rsvp-code']
-    # print guests
-    # print group
-    # pprint(form)
-    print "FORM!"
-    for thing in dir(form):
-        print thing
-        pprint(form.__getattribute__(thing))
-        print ""
     if form.validate_on_submit():
-        msg = Message("RSVP - " + group['display-name'] + " " + session['rsvp-code'],
-                      sender="sidama@jaffucci.com",
-                      recipients=app.config["RECIPIENTS"])
-        msg.body = ""
+        post_url = "https://api.mailgun.net/v2/" + app.config["MAILGUN_DOMAIN"] + "/messages"
+        auth = ("api", app.config["MAILGUN_API_KEY"])
+        data = {"subject": "RSVP - " + group['display-name'] + " " + session['rsvp-code'],
+               "from": "sidama@jaffucci.com",
+                "text": "",
+               "to": app.config["RECIPIENTS"]}
+
         for g in guests:
             g["entree"] = form["entree_" + g["name"]].data
             g["coming"] = form["yesno_" + g["name"]].data
-            msg.body += "RSVP: " + g["name"] + " " + g["coming"] + " " + g["entree"] + "\n"
+            data["text"] += "RSVP: " + g["name"] + " " + g["coming"] + " " + g["entree"] + "\n"
             db.guests.save(g)
-        print "sending"
-        print msg.body
-        mail.send(msg)
+        requests.post(post_url, auth=auth, data=data)
         return redirect(url_for("rsvp_done"))
 
     if request.method == "GET":

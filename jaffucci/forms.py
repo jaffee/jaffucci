@@ -27,11 +27,6 @@ def required_if_other_equals(otherfieldname, otherval, message=""):
         if field.data:
             return True
         else:
-            print "else"
-            print otherfieldname
-            print otherval
-            print field.data
-            print form[otherfieldname].data
             if form[otherfieldname].data == otherval:
                 raise ValidationError(message)
             return True
