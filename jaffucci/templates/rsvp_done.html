@@ -1,0 +1,64 @@
+{% extends "base.html" %}
+{% macro render_dict_list(dl, empty="Empty", exclude_fields=[], empty_string="-") %}
+  {% if dl %}
+  <table class="rdl-table">
+    {% with keys=dl[0].keys() %}
+    <tr class="rdl-header-tr">
+      {% for k in keys %}
+	{% if k not in exclude_fields %}
+	  <td class="rdl-header-td"> {{ k|capitalize }} </td>
+	{% endif %}
+      {% endfor %}
+    </tr>
+    {% for d in dl %}
+      <tr class="rdl-tr">
+	{% for k in keys %}
+	  {% if k not in exclude_fields %}
+	    <td class="rdl-td">
+	      {% if d[k] == "veg" %}
+		Vegetarian
+	      {% elif d[k] == "meat" %}
+		Duet
+	      {% elif d[k] %}
+		{{ d[k] }}
+	      {% else %}
+		{{ empty_string }}
+	      {% endif %}
+	    </td>
+	  {% endif %}
+	{% endfor %}
+      </tr>
+    {% endfor %}
+  {% endwith %}
+  </table>
+  {% else %}
+    {{ empty }}
+  {% endif %}
+{% endmacro %}
+
+{% block scripts %}
+  <style type="text/css">
+    html {
+    background: url(/static/img/rcouch1.jpg) no-repeat center -80px;
+    background-size: cover;
+    }
+  </style>
+{% endblock %}
+
+
+{% block body %}
+<div id="rsvp-done-guests">
+<h3>
+Thanks for RSVP-ing! Here's what we've got you down for:
+</h3>
+{{ render_dict_list(guests, exclude_fields=["_id"]) }}
+<p>
+  If that's wrong, you can head back to <a href="{{ url_for('rsvp') }}"> the rsvp page </a> to change it.
+</p>
+<br/>
+<h3>
+Head on back to <a href="{{ url_for('home') }}"> jaffucci.com </a> for other wedding related news and information!
+</h3>
+</div>
+
+{% endblock %}

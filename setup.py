@@ -9,6 +9,8 @@ setup(
         'pymongo',
         'Flask-WTF',
         'Flask-Login',
+        'Flask-Mail',
         'wtforms',
+        'docopt',
 	],
 )

@@ -1,0 +1,63 @@
+{% macro render_dict_list(dl, empty="Empty", exclude_fields=[], empty_string="-") %}
+  {% if dl %}
+  <table class="rdl-table">
+    {% with keys=dl[0].keys() %}
+    <tr class="rdl-header-tr">
+      {% for k in keys %}
+	{% if k not in exclude_fields %}
+	  <td class="rdl-header-td"> {{ k }} </td>
+	{% endif %}
+      {% endfor %}
+    </tr>
+    {% for d in dl %}
+      <tr class="rdl-tr">
+	{% for k in keys %}
+	  {% if k not in exclude_fields %}
+	    <td class="rdl-td">
+	      {% if d[k] %}
+		{{ d[k] }}
+	      {% else %}
+		{{ empty_string }}
+	      {% endif %}
+	    </td>
+	  {% endif %}
+	{% endfor %}
+      </tr>
+    {% endfor %}
+  {% endwith %}
+  </table>
+  {% else %}
+    {{ empty }}
+  {% endif %}
+{% endmacro %}
+
+<html>
+  <head>
+    {% block head %}
+      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/screen.css') }}"></link>
+      <title> {% block title %} {{ title }} {% endblock %} </title>
+    {% endblock %}
+  </head>
+  <body>
+
+{% block scripts %}
+  <style type="text/css">
+    html {
+//    background: linear-gradient(rgba(255,255,200,0.3),rgba(255,255,200,0.3) 100%) fixed, url(/static/img/rcouch1.jpg) no-repeat center -80px;
+    background-size: cover;
+    }
+  </style>
+{% endblock %}
+
+
+{% block body %}
+  {{ render_dict_list(guests, exclude_fields=["_id"]) }}
+<br/>
+<br/>
+  {{ render_dict_list(groups, exclude_fields=["_id"]) }}
+
+{% endblock %}
+
+
+  </body>
+</html>

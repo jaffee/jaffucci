@@ -1,17 +1,26 @@
-from jaffucci import app, forms, user, db
-from flask import redirect, render_template, url_for, flash, request, g, send_from_directory
+from jaffucci import app, forms, user
+import jaffucci.db as db # import db
+from flask import redirect, render_template, url_for, flash, request, g, send_from_directory, session
 from werkzeug import secure_filename
 import os
 
 
+from flask_mail import Mail, Message
 from flask_login import (login_user, logout_user, flash, login_required,
                          LoginManager, current_user)
-
+from pprint import pprint
 login_manager = LoginManager()
 login_manager.init_app(app)
 login_manager.login_view = "login"
 
 #app.secret_key = app.config['SECRET_KEY']
+
+pprint(app.config)
+
+mail = Mail(app)
+
+def normalize_password(apass):
+    return apass.strip().replace(" ", "").lower()
 
 
 
@@ -24,6 +33,74 @@ def load_user(user_id):
 @app.route('/')
 def index():
     return redirect(url_for('home'))
+
+@app.route('/rsvp', methods=['GET', 'POST'])
+def rsvp():
+    form = forms.RSVPForm()
+    if form.validate_on_submit():
+        code =  normalize_password(form.password.data)
+        group = db.groups.find_one({"code": code})
+        if group:
+            session['rsvp-code'] = code
+            return redirect(url_for('rsvp_form'))
+        else:
+            flash("Sorry! We don't have that password on file - check your spelling and try again. <br/> If you continue to have trouble, <a href='forgot_password'> click here</a>")
+    return render_template("rsvp.html",
+                           selected={}, form=form)
+
+@app.route("/rsvp_form", methods=['GET', 'POST'])
+def rsvp_form():
+    class F(forms.RSVPDetailForm):
+        pass
+    group = db.groups.find_one({"code": session['rsvp-code']})
+    guests = db.guests.find({"name": {"$in": group["guest-names"]}})
+    guests = [g for g in guests]
+    form = F.get(guests)
+    # print session['rsvp-code']
+    # print guests
+    # print group
+    # pprint(form)
+    print "FORM!"
+    for thing in dir(form):
+        print thing
+        pprint(form.__getattribute__(thing))
+        print ""
+    if form.validate_on_submit():
+        msg = Message("RSVP - " + group['display-name'] + " " + session['rsvp-code'],
+                      sender="sidama@jaffucci.com",
+                      recipients=app.config["RECIPIENTS"])
+        msg.body = ""
+        for g in guests:
+            g["entree"] = form["entree_" + g["name"]].data
+            g["coming"] = form["yesno_" + g["name"]].data
+            msg.body += "RSVP: " + g["name"] + " " + g["coming"] + " " + g["entree"] + "\n"
+            db.guests.save(g)
+        print "sending"
+        print msg.body
+        mail.send(msg)
+        return redirect(url_for("rsvp_done"))
+
+    if request.method == "GET":
+        form.fill_in(guests)
+    return render_template("rsvp_form.html", group=group, guests=guests, form=form, selected={})
+
+@app.route("/forgot_password")
+def forgot_password():
+    return render_template("forgot_password.html", selected={})
+
+@app.route("/rsvp_done")
+def rsvp_done():
+    group = db.groups.find_one({"code": session['rsvp-code']})
+    guests = db.guests.find({"name": {"$in": group["guest-names"]}})
+    guests = [g for g in guests]
+
+    return render_template("rsvp_done.html", guests=guests, selected={})
+
+
+@app.route
+def rsvp_page():
+    return "lkdjs"
+
 
 
 @app.route('/home')
@@ -93,9 +170,17 @@ def image_check():
                            images=images,
                            selected={})
 
+@app.route('/rsvp_check')
+@login_required
+def rsvp_check():
+    guests = [g for g in db.guests.find()]
+    groups = [b for b in db.groups.find()]
+    return render_template("rsvp_check.html", guests=guests, groups=groups)
+
 
 
 @app.route('/login', methods=['GET', 'POST'])
+@login_required
 def login():
     form = forms.LoginForm()
     if form.validate_on_submit():

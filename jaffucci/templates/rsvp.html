@@ -1,0 +1,91 @@
+{% macro formerrors(form) -%}
+    {% if form.errors %}
+    <ul class="errors">
+        {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+            {% for error in field_errors %}
+                <li>{{ form[field_name].label }}: {{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+{%- endmacro %}
+
+
+<html>
+  <head>
+    {% block head %}
+      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/screen.css') }}"></link>
+      <title> {% block title %} {{ title }} {% endblock %} </title>
+    {% endblock %}
+  </head>
+  <body>
+
+{% block scripts %}
+  <style type="text/css">
+    html {
+    background: linear-gradient(rgba(255,255,200,0.3),rgba(255,255,200,0.3) 100%) fixed, url(/static/img/rcouch1.jpg) no-repeat center -80px;
+    background-size: cover;
+    }
+  </style>
+{% endblock %}
+
+
+{% block body %}
+  <div id="rsvp-page">
+    <div id="rsvp-titles">
+      <h1> Ready to RSVP? </h1>
+      <h2>Enter the one word password from your RSVP card below.</h2>
+    </div>
+    {{ formerrors(form) }}
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+	<div class="flashes">
+	  {% for message in messages %}
+	    {{ message|safe }}<br>
+	  {% endfor %}
+	</div>
+      {% endif %}
+    {% endwith %}
+
+    <div id="rsvp-container">
+      <form id="rsvp-form" action="{{ url_for('rsvp') }}" method="post">
+	{{ form.hidden_tag() }}
+	{{ form.password(style="color:grey;", onclick="input_click(this)", onfocus="this.select();", onblur="input_blur(this)", value="Enter Password from RSVP card", datadefault="Enter Password from RSVP card") }}
+	{# <input style="color:grey;" id="rsvp" type="text" #}
+	{#        id="password" #}
+	{#        name="password" #}
+	{#        onclick="input_click(this)" #}
+	{#        onfocus="this.select()" #}
+	{#        onblur="input_blur(this)" #}
+	{#        value="Enter Password from RSVP card" #}
+	{#        data_default="Enter Password from RSVP card"> #}
+	{# </input>  #}
+	<button type="submit" class="ourdarkpink"> RSVP </button>
+      </form>
+      <a href="{{ url_for('forgot_password') }}"> Forgot Password? </a>
+    </div>
+
+    <div id="just-looking">
+      Just looking to browse jaffucci.com? Click <a href="{{ url_for('home') }}">here</a>
+    </div>
+  </div>
+
+{% endblock %}
+
+
+  </body>
+  <script type="text/javascript">
+   var input_click = function (inp) {
+     if(inp.value==inp.getAttribute("datadefault")){//'Enter Password from Invitation'
+       inp.value='';
+     }
+     inp.style.color='black';
+   }
+   var input_blur = function (inp) {
+     if(!inp.value){
+       inp.value=inp.getAttribute("datadefault");//'Enter Password from Invitation';
+       inp.style.color='grey';
+     }
+   }
+  </script>
+</html>

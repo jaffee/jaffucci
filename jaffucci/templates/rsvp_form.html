@@ -1,0 +1,69 @@
+{% macro formerrors(form) -%}
+    {% if form.errors %}
+    <ul class="errors">
+        {% for field_name, field_errors in form.errors|dictsort if field_errors %}
+            {% for error in field_errors %}
+                <li>{{ form[field_name].label }}: {{ error }}</li>
+            {% endfor %}
+        {% endfor %}
+    </ul>
+    {% endif %}
+{%- endmacro %}
+
+
+<html>
+  <head>
+    {% block head %}
+      <link rel=stylesheet type=text/css href="{{ url_for('static', filename='css/screen.css') }}"></link>
+      <title> {% block title %} {{ title }} {% endblock %} </title>
+    {% endblock %}
+  </head>
+  <body>
+
+{% block scripts %}
+  <style type="text/css">
+    html {
+//    background: linear-gradient(rgba(255,255,200,0.3),rgba(255,255,200,0.3) 100%) fixed, url(/static/img/rcouch1.jpg) no-repeat center -80px;
+    background-size: cover;
+    }
+  </style>
+{% endblock %}
+
+
+{% block body %}
+  <div id="rsvp-form-page">
+    <div id="rsvp-form-titles">
+      <h1> {{ group["display-name"] }} </h1>
+      <h2>Please fill out the form below:</h2>
+    </div>
+    {{ formerrors(form) }}
+    {% with messages = get_flashed_messages() %}
+      {% if messages %}
+	<div class="flashes">
+	  {% for message in messages %}
+	  {{ message|safe }}<br>
+	  {% endfor %}
+	</div>
+      {% endif %}
+    {% endwith %}
+
+    <div id="rsvp-form-container">
+	<form class="rsvp-form-form" action="{{ url_for('rsvp_form') }}" method="post">
+	{{ form.hidden_tag() }}
+	  {% for g in guests %}
+	    <div class="guestrow">
+	      <span class="guestname"> {{ g.name }} </span>
+	      <span class="yesnofield"> {{ form["yesno_" + g.name] }}</span>
+	      <span class="midtext"> the invitation, and would like </span>
+	      <span class="entreefield"> {{ form["entree_" + g.name] }} </span>
+	    </div>
+	  {% endfor %}
+	  <button type="submit"> Submit </button>
+	</form>
+    </div>
+  </div>
+{% endblock %}
+
+
+  </body>
+</html>
