@@ -929,3 +929,14 @@ div.two-col div {
 #rsvp-done-guests p {
     font-size: 16px;
 }
+
+
+#submit {
+    background-color: rgba(172,31,110,1); /* #ac1f6e; */
+    height: 100px;
+    width: 200px;
+    font-size: 2.4em;
+    font-weight: bold;
+    margin-left: 375px;
+    margin-top: 15px;
+}
