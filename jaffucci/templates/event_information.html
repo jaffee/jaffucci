@@ -22,10 +22,10 @@
 	<span> <img height="32px" src="{{ url_for('static', filename='img/wedding_party.png') }}"/> </span>
 	<span> Wedding Party</span>
       </button>
-      {# <button id="registry" title="Registry"> #}
-      {# 	<span> <img height="32px" src="{{ url_for('static', filename='img/registry.png') }}"/> </span> #}
-      {# 	<span> Registry </span> #}
-      {# </button> #}
+      <button id="registry" title="Registry">
+	<span> <img height="32px" src="{{ url_for('static', filename='img/registry.png') }}"/> </span>
+	<span> Registry </span>
+      </button>
     </div>
 
     <div id="ceremony-content" class="subcontent">
@@ -244,7 +244,10 @@
       <br class="clear"/>
     </div>
     <div id="registry-content" style="display: none;" class="subcontent">
-      Coming Soon!
+      <div>Hello family and friends! Want to get a gift, but at a loss as to what it should be? We've got a few ideas ;)</div>
+      <div><span><a href="http://www.honeyfund.com/wedding/jaffucci"><img src="{{ url_for('static', filename='img/honeyfund-1.jpg') }}"/></a></span></div>
+	  <div><span><a href="http://www.amazon.com/registry/wedding/3HDEM7025CBGQ"><img src="{{ url_for('static', filename='img/Amazon.png') }}"/></a></span></div>
+
     </div>
   </div>
 {% endblock %}
