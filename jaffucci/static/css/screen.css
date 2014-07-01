@@ -962,3 +962,14 @@ div.two-col div {
 #restrictions {
     margin-bottom: 40px;
 }
+
+
+#book-content {
+    margin-top: 60px;
+}
+#book-content div {
+    text-align: left;
+    font-size: 20px;
+    margin: 30px;
+    margin-left: 50px;
+}

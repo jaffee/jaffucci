@@ -33,7 +33,10 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
-    return redirect(url_for('home'))
+    if not session.get('rsvpd?', None):
+        return redirect(url_for('rsvp'))
+    else:
+        return redirect(url_for('home'))
 
 @app.route('/rsvp', methods=['GET', 'POST'])
 def rsvp():
@@ -74,6 +77,7 @@ def rsvp_form():
             db.guests.save(g)
         data["text"] += "\nComment:\n" + group.get("comment", "")
         requests.post(post_url, auth=auth, data=data)
+        session['rsvpd?'] = True
         return redirect(url_for("rsvp_done"))
 
     if request.method == "GET":
