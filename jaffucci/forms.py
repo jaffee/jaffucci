@@ -55,7 +55,7 @@ class RSVPDetailForm(DynamicForm):
         return cls()
 
     def fill_in(self, guests, group):
-        self["comment"].data = group["comment"]
+        self["comment"].data = group.get("comment", "")
         for g in guests:
             name = g["name"]
             self["yesno_" + name].data = g["coming"]
