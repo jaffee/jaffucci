@@ -84,6 +84,7 @@ def import_guests(filename):
                     "code": row[1],
                     "display-name": row[0].split()[-1],
                     "guest-names": [row[0]],
+                    "comment": "",
                 }
             else:
                 group["guest-names"].append(row[0])

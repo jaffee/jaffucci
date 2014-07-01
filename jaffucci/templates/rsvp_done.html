@@ -49,13 +49,18 @@
 {% block body %}
 <div id="rsvp-done-guests">
 <h3>
-Thanks for RSVP-ing! Here's what we've got you down for:
+  Thanks for RSVP-ing! Here's what we've got you down for:
 </h3>
 {{ render_dict_list(guests, exclude_fields=["_id"]) }}
+<div id="restrictions">
+  <div id="restrictions-header"> Additional Restrictions: </div>
+  <p> {{ group["comment"] }}  </p>
+</div>
+
 <p>
   If that's wrong, you can head back to <a href="{{ url_for('rsvp') }}"> the rsvp page </a> to change it.
 </p>
-<br/>
+
 <h3>
 Head on back to <a href="{{ url_for('home') }}"> jaffucci.com </a> for other wedding related news and information!
 </h3>

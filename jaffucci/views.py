@@ -61,20 +61,23 @@ def rsvp_form():
         post_url = "https://api.mailgun.net/v2/" + app.config["MAILGUN_DOMAIN"] + "/messages"
         auth = ("api", app.config["MAILGUN_API_KEY"])
         data = {"subject": "RSVP - " + group['display-name'] + " " + session['rsvp-code'],
-               "from": "sidama@jaffucci.com",
+                "from": "sidama@jaffucci.com",
                 "text": "",
-               "to": app.config["RECIPIENTS"]}
+                "to": app.config["RECIPIENTS"]}
+        group["comment"] = form.comment.data
+        db.groups.save(group)
 
         for g in guests:
             g["entree"] = form["entree_" + g["name"]].data
             g["coming"] = form["yesno_" + g["name"]].data
             data["text"] += "RSVP: " + g["name"] + " " + g["coming"] + " " + g["entree"] + "\n"
             db.guests.save(g)
+        data["text"] += "\nComment:\n" + group.get("comment", "")
         requests.post(post_url, auth=auth, data=data)
         return redirect(url_for("rsvp_done"))
 
     if request.method == "GET":
-        form.fill_in(guests)
+        form.fill_in(guests, group)
     return render_template("rsvp_form.html", group=group, guests=guests, form=form, selected={})
 
 @app.route("/forgot_password")
@@ -87,13 +90,7 @@ def rsvp_done():
     guests = db.guests.find({"name": {"$in": group["guest-names"]}})
     guests = [g for g in guests]
 
-    return render_template("rsvp_done.html", guests=guests, selected={})
-
-
-@app.route
-def rsvp_page():
-    return "lkdjs"
-
+    return render_template("rsvp_done.html", guests=guests, group=group, selected={})
 
 
 @app.route('/home')

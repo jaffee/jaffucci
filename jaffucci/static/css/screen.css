@@ -950,3 +950,15 @@ div.two-col div {
     margin-left: 375px;
     margin-top: 15px;
 }
+
+#restrictions-header {
+    width: 600px;
+    margin: 0 auto;
+    margin-top: 15px;
+    text-align: left;
+    font-weight: bold;
+}
+
+#restrictions {
+    margin-bottom: 40px;
+}
