@@ -7,8 +7,15 @@ from wtforms.validators import Required, EqualTo, NumberRange, Email, Optional, 
 class DynamicForm(Form):
     @classmethod
     def append_field(cls, name, field):
-        setattr(cls, name, field)
+        setattr(cls, DynamicForm._clean_name(name), field)
         return cls
+
+    def __getitem__(self, name):
+        return Form.__getitem__(self, DynamicForm._clean_name(name))
+
+    @staticmethod
+    def _clean_name(name):
+        return name.encode('ascii', 'ignore')
 
 
 class LoginForm(Form):

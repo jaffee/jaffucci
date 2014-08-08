@@ -1,6 +1,6 @@
 from jaffucci import app, forms, user
 import jaffucci.db as db # import db
-from flask import redirect, render_template, url_for, flash, request, g, send_from_directory, session
+from flask import redirect, render_template, url_for, flash, request, session
 from werkzeug import secure_filename
 import os
 import requests
@@ -58,7 +58,7 @@ def rsvp_form():
         pass
     group = db.groups.find_one({"code": session['rsvp-code']})
     guests = db.guests.find({"name": {"$in": group["guest-names"]}})
-    guests = [g for g in guests]
+    guests = [gr for gr in guests]
     form = F.get(guests)
     if form.validate_on_submit():
         post_url = "https://api.mailgun.net/v2/" + app.config["MAILGUN_DOMAIN"] + "/messages"
@@ -70,11 +70,11 @@ def rsvp_form():
         group["comment"] = form.comment.data
         db.groups.save(group)
 
-        for g in guests:
-            g["entree"] = form["entree_" + g["name"]].data
-            g["coming"] = form["yesno_" + g["name"]].data
-            data["text"] += "RSVP: " + g["name"] + " " + g["coming"] + " " + g["entree"] + "\n"
-            db.guests.save(g)
+        for gr in guests:
+            gr["entree"] = form["entree_" + gr["name"]].data
+            gr["coming"] = form["yesno_" + gr["name"]].data
+            data["text"] += "RSVP: " + gr["name"] + " " + gr["coming"] + " " + gr["entree"] + "\n"
+            db.guests.save(gr)
         data["text"] += "\nComment:\n" + group.get("comment", "")
         requests.post(post_url, auth=auth, data=data)
         session['rsvpd?'] = True
