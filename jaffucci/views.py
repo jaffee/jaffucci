@@ -33,10 +33,10 @@ def load_user(user_id):
 
 @app.route('/')
 def index():
-    if not session.get('rsvpd?', None):
-        return redirect(url_for('rsvp'))
-    else:
-        return redirect(url_for('home'))
+    # if not session.get('rsvpd?', None):
+    #     return redirect(url_for('rsvp'))
+    # else:
+    return redirect(url_for('home'))
 
 @app.route('/rsvp', methods=['GET', 'POST'])
 def rsvp():
