@@ -4,6 +4,7 @@ from flask import redirect, render_template, url_for, flash, request, session
 from werkzeug import secure_filename
 import os
 import requests
+from get_img_urls import get_img_urls
 
 
 from flask_mail import Mail, Message
@@ -15,6 +16,7 @@ login_manager.init_app(app)
 login_manager.login_view = "login"
 
 #app.secret_key = app.config['SECRET_KEY']
+TWIT_USER = app.config['TWIT_USER']
 
 pprint(app.config)
 
@@ -51,6 +53,17 @@ def rsvp():
             flash("Sorry! We don't have that password on file - check your spelling and try again. <br/> If you continue to have trouble, <a href='forgot_password'> click here</a>")
     return render_template("rsvp.html",
                            selected={}, form=form)
+
+@app.route('/selfies')
+def selfies():
+    try:
+        pic_urls = get_img_urls(TWIT_USER)
+        db.update_pic_urls(pic_urls)
+    except:
+        pic_urls = db.get_img_urls()
+    return render_template("selfies.html",
+                           selected={},
+                           pic_urls=pic_urls)
 
 @app.route("/rsvp_form", methods=['GET', 'POST'])
 def rsvp_form():

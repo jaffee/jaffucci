@@ -7,6 +7,10 @@ c = pymongo.MongoClient()
 db = c[dbname]
 guests = db["guests"]
 groups = db["rsvpgroups"]
+selfies = db["selfies"].find_one()
+if not selfies:
+    db["selfies"].save({"pic_urls": []})
+    selfies = db["selfies"].find_one()
 
 def startup():
     if not db["users"].find_one():
@@ -64,6 +68,15 @@ def move_guest_to_group(guest, group_display_name):
         return
     group["guest-names"].append(name)
     groups.save(group)
+
+def update_pic_urls(pic_urls):
+    saved_urls = selfies["pic_urls"]
+    all_urls = list(set(pic_urls + saved_urls))
+    selfies["pic_urls"] = all_urls
+    db["selfies"].save(selfies)
+
+def get_pic_urls():
+    return selfies["pic_urls"]
 
 
 class UnknownGroupError(Exception):
